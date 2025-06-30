@@ -1,4 +1,6 @@
-﻿namespace HorrorPerformanceWpfApp.Tests;
+﻿using System.Diagnostics;
+
+namespace HorrorPerformanceWpfApp.Tests;
 
 [TestClass()]
 public class UserManagerTests
@@ -11,11 +13,13 @@ public class UserManagerTests
     }
 
     [TestMethod()]
-    [Timeout(1000)]
     public void GetAverageAgeTest()
     {
+        var sw = Stopwatch.StartNew();
         var userManager = new UserManager(@".\Resources\DummyData.csv");
         var avgAge = userManager.GetAverageAge();
+        sw.Stop();
         Assert.AreEqual(avgAge, 46);
+        Assert.IsTrue(sw.ElapsedMilliseconds < 1000, "GetAverageAge took too long to execute.");
     }
 }

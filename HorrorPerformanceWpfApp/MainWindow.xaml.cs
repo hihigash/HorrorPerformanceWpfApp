@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 
 namespace HorrorPerformanceWpfApp;
 
@@ -7,15 +8,17 @@ namespace HorrorPerformanceWpfApp;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private readonly UserManager _userManager;
-
     public MainWindow()
     {
+        var sw = Stopwatch.StartNew();
         InitializeComponent();
-        _userManager = new UserManager(@"./Resources/DummyData.csv");
-        UserDataGrid.ItemsSource = _userManager.Users;
-        NumberOfUsers.Text = $"平均年齢: {_userManager.GetAverageAge()}";
+        var userManager = new UserManager(@"./Resources/DummyData.csv");
+        UserDataGrid.ItemsSource = userManager.Users;
+        NumberOfUsers.Text = $"平均年齢: {userManager.GetAverageAge()}";
 
         Thread.Sleep(2000); // デバッグ用
+
+        sw.Stop();
+        LoadTime.Text = $"起動時間 : {sw.Elapsed:hh\\:mm\\:ss\\.fff}";
     }
 }
