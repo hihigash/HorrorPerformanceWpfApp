@@ -1,54 +1,26 @@
-# HorrorPerformanceWpfApp
+# Horror Performance WPF App - GitHub Copilot を使用したパフォーマンス改善ハンズオン
 
-A WPF application designed to demonstrate common performance anti-patterns and inefficient coding practices. This educational project showcases how seemingly innocent code can lead to significant performance degradation.
+## 🏠 はじめに
 
-## 📋 Overview
+本プロジェクトは、.NET 8を使用した WPF アプリケーションを題材として、Visual Studio 2022 の GitHub Copilot 機能を用いたパフォーマンス問題の特定と改善方法を体系的に習得するためのハンズオン演習です。
 
-This application loads and displays user data from a CSV file in a WPF DataGrid. While the functionality is simple, the implementation contains intentional performance bottlenecks to illustrate common programming mistakes that can severely impact application performance.
+Visual Studio における GitHub Copilot の大きな特長は、プロファイラーやテストツール、デバッグ機能といった既存の Visual Studio が提供する機能との緊密な統合にあります。  
+本ハンズオンでは、特にパフォーマンス プロファイラーと単体テストツールに統合された GitHub Copilot の機能を活用し、問題のあるコードの特定から修正まで、より効率的な開発手法を身につけることができます。
 
-## 🚀 Features
+## 🎯 学習目標
 
-- **User Data Display**: Loads user information from CSV file and displays in a sortable DataGrid
-- **Age Calculation**: Calculates and displays average age of all users
-- **Performance Bottlenecks**: Intentionally includes inefficient code patterns for educational purposes
-- **Unit Tests**: Includes test cases with performance expectations
+- GitHub Copilot を使用したパフォーマンス問題の調査方法を習得する
+- Visual Studio のパフォーマンス プロファイラーを効率的に使用する方法を理解する
+- 単体テストにおけるテスト失敗の原因分析とデバッグ手法を身につける
+- コードの最適化技術を実践的に学習する
 
-## 🏗️ Architecture
+## 🛠️ 前提条件
 
-The application follows a simple layered architecture:
+- Visual Studio 2022
+- .NET 8.0 SDK
+- GitHub Copilot拡張機能
+- 基本的な C# と WPF の知識
 
-- **Presentation Layer**: `MainWindow.xaml` - WPF user interface
-- **Business Logic**: `UserManager.cs` - Handles user data operations
-- **Data Model**: `User.cs` - Represents user entity
-- **Data Source**: `DummyData.csv` - Contains 3,000 user records
-
-## 🔧 Technical Stack
-
-- **.NET 8.0**: Target framework with Windows-specific features
-- **WPF**: Windows Presentation Foundation for UI
-- **nietras.SeparatedValues (Sep)**: High-performance CSV parsing library
-- **MSTest**: Unit testing framework
-
-## 📁 Project Structure
-
-```
-HorrorPerformanceWpfApp/
-├── HorrorPerformanceWpfApp/           # Main WPF application
-│   ├── MainWindow.xaml                # Main UI window
-│   ├── MainWindow.xaml.cs            # Main window code-behind
-│   ├── User.cs                       # User data model
-│   ├── UserManager.cs                # User data management
-│   └── Resources/
-│       └── DummyData.csv             # Sample data (3,000 records)
-├── HorrorPerformanceWpfAppTests/      # Unit tests
-│   └── UserManagerTests.cs          # UserManager test cases
-└── README.md                         # This file
-```
-
-## 📊 Performance Metrics
-
-The application includes a performance test that expects:
-- Loading 3,000 user records
-- Average age calculation to complete within 1 second (often fails due to intentional bottlenecks)
-- Initial UI load time of ~2 seconds
-
+## 🚀 演習方法
+1. 本リポジトリはテンプレート リポジトリです。[`Use this template`] ボタンをクリックし、ご自身のアカウントまたは組織 (Organizaiton) アカウントに演習用のリポジトリとして新規作成します。
+2. GitHub リポジトリの `docs/PERFORMANCE_HANDSON_JA.md` に具体的なシナリオと演習が記載されています。
