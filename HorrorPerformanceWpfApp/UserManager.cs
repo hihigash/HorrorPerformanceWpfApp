@@ -4,17 +4,16 @@ namespace HorrorPerformanceWpfApp;
 
 public class UserManager
 {
-    public IEnumerable<User> Users;
+    public List<User> Users { get; }
 
     public UserManager(string fileName)
     {
         Users = GetUsers(fileName);
     }
 
-    private IEnumerable<User> GetUsers(string fileName)
+    private List<User> GetUsers(string fileName)
     {
         var allUsers = new List<User>();
-
         using var reader = Sep.Reader().FromFile(fileName);
 
         foreach (var row in reader)
@@ -31,21 +30,16 @@ public class UserManager
                 Address = row["Address"].ToString(),
                 CompanyName = row["CompanyName"].ToString()
             };
-
             allUsers.Add(user);
         }
-
-        return allUsers.Where(u => u != null).ToList().AsEnumerable();
+        return allUsers;
     }
 
     public int GetAverageAge()
     {
-        if (Users == null || !Users.Any())
-        {
+        if (Users?.Count == 0)
             throw new InvalidOperationException("User data is not loaded or empty.");
-        }
 
-        var totalAge = Users.Sum(u => u.Age);
-        return totalAge / Users.Count();
+        return (int)Users.Average(user => user.Age);
     }
 }

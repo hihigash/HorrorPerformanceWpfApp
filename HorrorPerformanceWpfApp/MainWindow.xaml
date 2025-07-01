@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HorrorPerformanceWpfApp"
         mc:Ignorable="d"
-        Title="Horror Performance WPF App - User Data" Height="600" Width="1200">
+        Title="Horror Performance WPF App - User Data" Height="600" Width="1200" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -23,6 +23,9 @@
         
         <DataGrid Grid.Row="1"
                   Name="UserDataGrid" 
+                  EnableRowVirtualization="True"
+                  EnableColumnVirtualization="True"
+                  VirtualizingPanel.VirtualizationMode="Recycling"
                   AutoGenerateColumns="True"
                   IsReadOnly="True"
                   CanUserAddRows="False"

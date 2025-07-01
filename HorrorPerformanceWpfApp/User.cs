@@ -18,11 +18,6 @@ public class User
         var today = DateTime.Now;
         var age = today.Year - BirthDay.Year;
 
-        for (var i = 0; i < 100000; i++)
-        {
-            var temp = Math.Sqrt(i) * Math.Sin(i);
-        }
-
         if (today.DayOfYear < BirthDay.DayOfYear)
             age--;
 

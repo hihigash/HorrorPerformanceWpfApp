@@ -10,15 +10,18 @@ public partial class MainWindow : Window
 {
     public MainWindow()
     {
-        var sw = Stopwatch.StartNew();
         InitializeComponent();
-        var userManager = new UserManager(@"./Resources/DummyData.csv");
-        UserDataGrid.ItemsSource = userManager.Users;
-        NumberOfUsers.Text = $"平均年齢: {userManager.GetAverageAge()}";
+    }
 
-        Thread.Sleep(2000); // デバッグ用
+    private void Window_Loaded(object sender, RoutedEventArgs e)
+    {
+        var sw = Stopwatch.StartNew();
+
+        var mgrForAverage = new UserManager("Resources/DummyData.csv");
+        NumberOfUsers.Text = $"平均年齢: {mgrForAverage.GetAverageAge()}";
+        UserDataGrid.ItemsSource = mgrForAverage.Users;
 
         sw.Stop();
-        LoadTime.Text = $"起動時間 : {sw.Elapsed:hh\\:mm\\:ss\\.fff}";
+        LoadTime.Text = $"起動時間 : {sw.Elapsed:mm\\:ss\\.fff}";
     }
 }
